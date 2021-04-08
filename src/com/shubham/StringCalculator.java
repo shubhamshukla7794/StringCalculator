@@ -12,7 +12,7 @@ public class StringCalculator {
 		} else if (numbers.length() == 1) {
 			return intConveter(numbers);
 		}else {
-			String[] nums = numbers.split(",");
+			String[] nums = numbers.split(",|\n");
 			List<Integer> numerical = StrArrToIntList(nums);
 			return sum(numerical);
 		}

@@ -30,4 +30,9 @@ class StringCalculatorTest {
 	void testMultipleNumbers() {
 		assertEquals(77, StringCalculator.add("10,20,40,7"));
 	}
+	
+	@Test
+	void testNumbersWithNewLine() {
+		assertEquals(70, StringCalculator.add("10,10\n50"));
+	}
 }
