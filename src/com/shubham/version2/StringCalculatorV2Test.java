@@ -46,4 +46,15 @@ class StringCalculatorV2Test {
 			assertEquals("Negatives not allowed. -10,-10", e.getMessage());
 		}
 	}
+	
+	@Test
+	void testACallCount() {
+		assertEquals(1, StringCalculatorV2.getCalledCount());// this is 2nd in order now in my case
+	}
+	
+	@Test
+	void testZCallCount() {
+		assertEquals(6, StringCalculatorV2.getCalledCount());// this is 8th in order now in my case
+	}
+	
 }

@@ -4,8 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StringCalculatorV2 {
+	
+	private static int count = 0;
 
 	public static int add(String numbers) {
+		
+		count++;
+		
 		if (numbers.isEmpty()) {
 			return 0;
 		} else if (numbers.length() == 1) {
@@ -100,6 +105,10 @@ public class StringCalculatorV2 {
 
 	private static int intConverter(String num) {
 		return Integer.parseInt(num);
+	}
+
+	public static Integer getCalledCount() {
+		return count;
 	}
 
 }
