@@ -91,7 +91,9 @@ public class StringCalculatorV2 {
 			if (intConverter(numerical[i])<0) {
 				negative.add(intConverter(numerical[i]));
 			} else {
-				positive.add(intConverter(numerical[i]));
+				if (intConverter(numerical[i])<=1000) {
+					positive.add(intConverter(numerical[i]));
+				}
 			}
 		}
 		intNums.add(positive);
