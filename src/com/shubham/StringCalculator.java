@@ -1,5 +1,8 @@
 package com.shubham;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class StringCalculator {
 
 	public static int add(String numbers) {
@@ -7,12 +10,32 @@ public class StringCalculator {
 		if (numbers.isEmpty()) {
 			return 0;
 		} else if (numbers.length() == 1) {
-			return Integer.parseInt(numbers);
+			return intConveter(numbers);
 		}else {
 			String[] nums = numbers.split(",");
-			return Integer.parseInt(nums[0]) + Integer.parseInt(nums[1]);
+			List<Integer> numerical = StrArrToIntList(nums);
+			return sum(numerical);
 		}
 		
 	}
+	
+	private static int sum(List<Integer> numerical) {
+		int sums = 0;
+		for (Integer i : numerical) {
+			sums += i;
+		}
+		return sums;
+	}
 
+	public static int intConveter(String num) {
+		return Integer.parseInt(num);
+	}
+
+	public static List<Integer> StrArrToIntList(String[] nums) {
+		List<Integer> intNums = new ArrayList<>();
+		for (int i = 0; i < nums.length; i++) {
+			intNums.add(intConveter(nums[i]));		
+		}
+		return intNums;
+	}
 }
