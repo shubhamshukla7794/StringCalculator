@@ -54,11 +54,16 @@ class StringCalculatorV2Test {
 	
 	@Test
 	void testZCallCount() {
-		assertEquals(7, StringCalculatorV2.getCalledCount());// this is 9th in order now in my case
+		assertEquals(8, StringCalculatorV2.getCalledCount());// this is 10th in order now in my case
 	}
 
 	@Test
 	void testMultipleNumbersWithGreaterThan1000() {
 		assertEquals(70, StringCalculatorV2.add("20,50,1024"));
+	}
+	
+	@Test
+	void testCustomDelimiterOfAnyLength() {
+		assertEquals(70, StringCalculatorV2.add("//[***]\n15***15***40"));
 	}
 }

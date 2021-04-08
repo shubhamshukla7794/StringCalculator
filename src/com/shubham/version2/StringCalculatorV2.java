@@ -63,6 +63,11 @@ public class StringCalculatorV2 {
 
 
 	private static String replaceDels(String str) {
+		
+		if (str.contains("[") && str.contains("]")) {
+			str = str.replace("[", "");
+			str = str.replace("]", "");
+		}
 
 		if (str.contains("*") || str.contains("+") || str.contains("?") || str.contains("^") || str.contains("$")) {
 			str = str.replace("*", "\\*");
