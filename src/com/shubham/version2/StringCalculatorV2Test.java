@@ -31,4 +31,9 @@ class StringCalculatorV2Test {
 	void testNumbersWithNewLine() {
 		assertEquals(70, StringCalculatorV2.add("5,15\n50"));
 	}
+	
+	@Test
+	void testCustomDelimiter() {
+		assertEquals(7, StringCalculatorV2.add("//;\n3;4"));
+	}
 }

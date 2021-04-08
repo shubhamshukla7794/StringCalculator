@@ -16,43 +16,46 @@ public class StringCalculator {
 		} else if (numbers.length() == 1) {
 			return intConveter(numbers);
 		} else {
-
-			int num = 0;
-			boolean flag = false;
-			List<Integer> positive = new ArrayList<Integer>();
-			List<Integer> negative = new ArrayList<Integer>();
-			numbers = "." + numbers + ".";
-
-			char[] charNum = numbers.toCharArray();
-
-			for (int i = 0; i < charNum.length; i++) {
-				if (num == 0 && isNum(charNum[i])) {
-					num = intConveter(charNum[i]);
-					if (charNum[i] > 0 && charNum[i - 1] == '-') {
-						flag = true;
-					}
-				}
-				if (isNum(charNum[i]) && isNum(charNum[i + 1])) {
-					num = num * 10 + intConveter(charNum[i + 1]);
-				} else if (isNum(charNum[i])) {
-					if (flag) {
-						negative.add(num * -1);
-						flag = false;
-					} else {
-						if (num <= 1000) {
-							positive.add(num);
-						}
-					}
-					num = 0;
-				}
-			}
-			if (negative.size() > 0) {
-				throw new RuntimeException("Negatives not allowed. " + allNegatives(negative));
-			}
-
-			return sum(positive);
+			return allDelimiterMethod(numbers);
 		}
 
+	}
+
+	private static int allDelimiterMethod(String numbers) {
+		int num = 0;
+		boolean flag = false;
+		List<Integer> positive = new ArrayList<Integer>();
+		List<Integer> negative = new ArrayList<Integer>();
+		numbers = "." + numbers + ".";
+
+		char[] charNum = numbers.toCharArray();
+
+		for (int i = 0; i < charNum.length; i++) {
+			if (num == 0 && isNum(charNum[i])) {
+				num = intConveter(charNum[i]);
+				if (charNum[i] > 0 && charNum[i - 1] == '-') {
+					flag = true;
+				}
+			}
+			if (isNum(charNum[i]) && isNum(charNum[i + 1])) {
+				num = num * 10 + intConveter(charNum[i + 1]);
+			} else if (isNum(charNum[i])) {
+				if (flag) {
+					negative.add(num * -1);
+					flag = false;
+				} else {
+					if (num <= 1000) {
+						positive.add(num);
+					}
+				}
+				num = 0;
+			}
+		}
+		if (negative.size() > 0) {
+			throw new RuntimeException("Negatives not allowed. " + allNegatives(negative));
+		}
+
+		return sum(positive);
 	}
 
 	private static String allNegatives(List<Integer> negative) {
@@ -77,7 +80,7 @@ public class StringCalculator {
 		return sums;
 	}
 
-	public static int intConveter(String num) {
+	private static int intConveter(String num) {
 		return Integer.parseInt(num);
 	}
 
@@ -85,7 +88,7 @@ public class StringCalculator {
 		return Character.getNumericValue(ch);
 	}
 
-	public static List<Integer> StrArrToIntList(String[] nums) {
+	private static List<Integer> StrArrToIntList(String[] nums) {
 		List<Integer> intNums = new ArrayList<>();
 		for (int i = 0; i < nums.length; i++) {
 			intNums.add(intConveter(nums[i]));

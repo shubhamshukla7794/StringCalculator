@@ -5,17 +5,49 @@ import java.util.List;
 
 public class StringCalculatorV2 {
 
-	public static int add(String number) {
-		if (number.isEmpty()) {
+	public static int add(String numbers) {
+		if (numbers.isEmpty()) {
 			return 0;
-		} else if (number.length() == 1) {
-			return intConverter(number);
+		} else if (numbers.length() == 1) {
+			return intConverter(numbers);
 		} else {
-			String[] numerical = splitStr(number, ",|\n");
-			List<Integer> nums = StrArrToIntList(numerical);
-			return sum(nums);
+			if (numbers.startsWith("//")) {
+				return customDelimiter(numbers);
+
+			} else {
+				return commaAndNewlineDelimiter(numbers);
+			}
 		}
 
+	}
+
+	private static int commaAndNewlineDelimiter(String numbers) {
+		String[] numerical = splitStr(numbers, ",|\n");
+		List<Integer> nums = StrArrToIntList(numerical);
+		return sum(nums);
+	}
+
+	private static int customDelimiter(String numbers) {
+		String[] tokens = splitStr(numbers, "\n");
+		String delimiters = tokens[0];
+		delimiters = delimiters.replace("//", "");
+		delimiters = replaceDels(delimiters);
+		String[] numerical = splitStr(tokens[1], delimiters);
+		List<Integer> nums = StrArrToIntList(numerical);
+		return sum(nums);
+	}
+
+	private static String replaceDels(String str) {
+
+		if (str.contains("*") || str.contains("+") || str.contains("?") || str.contains("^") || str.contains("$")) {
+			str = str.replace("*", "\\*");
+			str = str.replace("+", "\\+");
+			str = str.replace("?", "\\?");
+			str = str.replace("^", "\\^");
+			str = str.replace("$", "\\$");
+		}
+
+		return str;
 	}
 
 	private static int sum(List<Integer> nums) {
