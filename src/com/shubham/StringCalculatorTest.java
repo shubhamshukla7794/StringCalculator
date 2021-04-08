@@ -35,4 +35,9 @@ class StringCalculatorTest {
 	void testNumbersWithNewLine() {
 		assertEquals(70, StringCalculator.add("10,10\n50"));
 	}
+	
+	@Test
+	void testCustomDelimiter() {
+		assertEquals(3, StringCalculator.add("//;\\n1;2"));
+	}
 }
