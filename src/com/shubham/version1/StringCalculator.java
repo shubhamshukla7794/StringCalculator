@@ -88,14 +88,6 @@ public class StringCalculator {
 		return Character.getNumericValue(ch);
 	}
 
-	private static List<Integer> StrArrToIntList(String[] nums) {
-		List<Integer> intNums = new ArrayList<>();
-		for (int i = 0; i < nums.length; i++) {
-			intNums.add(intConveter(nums[i]));
-		}
-		return intNums;
-	}
-
 	public static int getCalledCount() {
 		return count;
 	}

@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StringCalculatorV2 {
-	
+
 	private static int count = 0;
 
 	public static int add(String numbers) {
-		
+
 		count++;
-		
+
 		if (numbers.isEmpty()) {
 			return 0;
 		} else if (numbers.length() == 1) {
@@ -39,17 +39,16 @@ public class StringCalculatorV2 {
 		String[] numerical = splitStr(tokens[1], delimiters);
 		return producingSum(numerical);
 	}
-	
+
 	private static int producingSum(String[] numerical) {
 		List<List<Integer>> nums = StrArrToIntList(numerical);
 		List<Integer> positive = nums.get(0);
 		List<Integer> negative = nums.get(1);
-		if (negative.size()>0) {
-			throw new RuntimeException("Negatives not allowed. "+allNegatives(negative));
+		if (negative.size() > 0) {
+			throw new RuntimeException("Negatives not allowed. " + allNegatives(negative));
 		}
 		return sum(positive);
 	}
-
 
 	private static String allNegatives(List<Integer> negative) {
 		StringBuilder all = new StringBuilder();
@@ -61,9 +60,8 @@ public class StringCalculatorV2 {
 		return all.toString();
 	}
 
-
 	private static String replaceDels(String str) {
-		
+
 		if (str.contains("][")) {
 			str = str.replace("][", "|");
 		}
@@ -72,7 +70,8 @@ public class StringCalculatorV2 {
 			str = str.replace("]", "");
 		}
 
-		if (str.contains("*") || str.contains("+") || str.contains("?") || str.contains("^") || str.contains("$")) {
+		if (str.contains("*") || str.contains("+") || str.contains("?") || 
+				str.contains("^") || str.contains("$")) {
 			str = str.replace("*", "\\*");
 			str = str.replace("+", "\\+");
 			str = str.replace("?", "\\?");
@@ -96,10 +95,10 @@ public class StringCalculatorV2 {
 		List<Integer> positive = new ArrayList<>();
 		List<Integer> negative = new ArrayList<>();
 		for (int i = 0; i < numerical.length; i++) {
-			if (intConverter(numerical[i])<0) {
+			if (intConverter(numerical[i]) < 0) {
 				negative.add(intConverter(numerical[i]));
 			} else {
-				if (intConverter(numerical[i])<=1000) {
+				if (intConverter(numerical[i]) <= 1000) {
 					positive.add(intConverter(numerical[i]));
 				}
 			}
