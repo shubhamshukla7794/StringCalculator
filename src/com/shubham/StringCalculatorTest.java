@@ -38,7 +38,7 @@ class StringCalculatorTest {
 
 	@Test
 	void testCustomDelimiter() {
-		assertEquals(3, StringCalculator.add("//;\\n1;2"));
+		assertEquals(3, StringCalculator.add("//;\n1;2"));
 	}
 
 	@Test
@@ -58,7 +58,7 @@ class StringCalculatorTest {
 
 	@Test
 	void testZCallCount() {
-		assertEquals(8, StringCalculator.getCalledCount()); // this is 10th in order in my case
+		assertEquals(9, StringCalculator.getCalledCount()); // this is 11th in order in my case
 	}
 	
 	@Test
@@ -66,4 +66,8 @@ class StringCalculatorTest {
 		assertEquals(77, StringCalculator.add("1024,30,40,7"));
 	}
 
+	@Test
+	void testCustomDelimiterOfAnyLength() {
+		assertEquals(70, StringCalculator.add("//[***]\n10***20***40"));
+	}
 }
