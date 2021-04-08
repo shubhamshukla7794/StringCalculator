@@ -26,4 +26,9 @@ class StringCalculatorV2Test {
 	void testMultipleNumbers() {
 		assertEquals(77, StringCalculatorV2.add("20,50,3,4"));
 	}
+	
+	@Test
+	void testNumbersWithNewLine() {
+		assertEquals(70, StringCalculatorV2.add("5,15\n50"));
+	}
 }

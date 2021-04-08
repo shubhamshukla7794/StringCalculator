@@ -11,7 +11,7 @@ public class StringCalculatorV2 {
 		} else if (number.length() == 1) {
 			return intConverter(number);
 		} else {
-			String[] numerical = splitStr(number, ",");
+			String[] numerical = splitStr(number, ",|\n");
 			List<Integer> nums = StrArrToIntList(numerical);
 			return sum(nums);
 		}
