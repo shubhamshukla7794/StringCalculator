@@ -36,4 +36,14 @@ class StringCalculatorV2Test {
 	void testCustomDelimiter() {
 		assertEquals(7, StringCalculatorV2.add("//;\n3;4"));
 	}
+	
+	@Test
+	void testNegativeNumber() {
+		try {
+			StringCalculatorV2.add("-10,45,-10,45");
+			fail("Expect an exception");
+		} catch (RuntimeException e) {
+			assertEquals("Negatives not allowed. -10,-10", e.getMessage());
+		}
+	}
 }

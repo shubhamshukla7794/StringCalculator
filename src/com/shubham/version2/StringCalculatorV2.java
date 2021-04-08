@@ -23,8 +23,7 @@ public class StringCalculatorV2 {
 
 	private static int commaAndNewlineDelimiter(String numbers) {
 		String[] numerical = splitStr(numbers, ",|\n");
-		List<Integer> nums = StrArrToIntList(numerical);
-		return sum(nums);
+		return producingSum(numerical);
 	}
 
 	private static int customDelimiter(String numbers) {
@@ -33,9 +32,30 @@ public class StringCalculatorV2 {
 		delimiters = delimiters.replace("//", "");
 		delimiters = replaceDels(delimiters);
 		String[] numerical = splitStr(tokens[1], delimiters);
-		List<Integer> nums = StrArrToIntList(numerical);
-		return sum(nums);
+		return producingSum(numerical);
 	}
+	
+	private static int producingSum(String[] numerical) {
+		List<List<Integer>> nums = StrArrToIntList(numerical);
+		List<Integer> positive = nums.get(0);
+		List<Integer> negative = nums.get(1);
+		if (negative.size()>0) {
+			throw new RuntimeException("Negatives not allowed. "+allNegatives(negative));
+		}
+		return sum(positive);
+	}
+
+
+	private static String allNegatives(List<Integer> negative) {
+		StringBuilder all = new StringBuilder();
+		for (int i : negative) {
+			all.append(i);
+			all.append(',');
+		}
+		all.deleteCharAt(all.length() - 1);
+		return all.toString();
+	}
+
 
 	private static String replaceDels(String str) {
 
@@ -58,11 +78,19 @@ public class StringCalculatorV2 {
 		return sums;
 	}
 
-	private static List<Integer> StrArrToIntList(String[] numerical) {
-		List<Integer> intNums = new ArrayList<>();
+	private static List<List<Integer>> StrArrToIntList(String[] numerical) {
+		List<List<Integer>> intNums = new ArrayList<>();
+		List<Integer> positive = new ArrayList<>();
+		List<Integer> negative = new ArrayList<>();
 		for (int i = 0; i < numerical.length; i++) {
-			intNums.add(intConverter(numerical[i]));
+			if (intConverter(numerical[i])<0) {
+				negative.add(intConverter(numerical[i]));
+			} else {
+				positive.add(intConverter(numerical[i]));
+			}
 		}
+		intNums.add(positive);
+		intNums.add(negative);
 		return intNums;
 	}
 
