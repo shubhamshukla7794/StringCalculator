@@ -49,12 +49,12 @@ class StringCalculatorV2Test {
 	
 	@Test
 	void testACallCount() {
-		assertEquals(1, StringCalculatorV2.getCalledCount());// this is 2nd in order now in my case
+		assertEquals(2, StringCalculatorV2.getCalledCount());// this is 3rd in order now in my case
 	}
 	
 	@Test
 	void testZCallCount() {
-		assertEquals(8, StringCalculatorV2.getCalledCount());// this is 10th in order now in my case
+		assertEquals(9, StringCalculatorV2.getCalledCount());// this is 11th in order now in my case
 	}
 
 	@Test
@@ -65,5 +65,9 @@ class StringCalculatorV2Test {
 	@Test
 	void testCustomDelimiterOfAnyLength() {
 		assertEquals(70, StringCalculatorV2.add("//[***]\n15***15***40"));
+	}
+	@Test
+	void testCustomMultipleDelimiterOfOneChar() {
+		assertEquals(70, StringCalculatorV2.add("//[*][%]\n25*30%15"));
 	}
 }
