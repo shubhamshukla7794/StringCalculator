@@ -58,7 +58,12 @@ class StringCalculatorTest {
 
 	@Test
 	void testZCallCount() {
-		assertEquals(7, StringCalculator.getCalledCount()); // this is 9th in order in my case
+		assertEquals(8, StringCalculator.getCalledCount()); // this is 10th in order in my case
+	}
+	
+	@Test
+	void testMultipleNumbersWithGreaterThan1000() {
+		assertEquals(77, StringCalculator.add("1024,30,40,7"));
 	}
 
 }

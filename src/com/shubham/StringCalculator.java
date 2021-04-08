@@ -39,7 +39,9 @@ public class StringCalculator {
 						negative.add(num * -1);
 						flag = false;
 					} else {
-						positive.add(num);
+						if (num <= 1000) {
+							positive.add(num);
+						}
 					}
 					num = 0;
 				}
