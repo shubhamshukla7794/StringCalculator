@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+
 class StringCalculatorV2Test {
 
 	@Test
@@ -14,5 +15,10 @@ class StringCalculatorV2Test {
 	@Test
 	void testOneNumber() {
 		assertEquals(7, StringCalculatorV2.add("7"));
+	}
+	
+	@Test
+	void testTwoNumbers() {
+		assertEquals(100, StringCalculatorV2.add("30,70"));
 	}
 }
