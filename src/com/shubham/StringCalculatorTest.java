@@ -58,7 +58,7 @@ class StringCalculatorTest {
 
 	@Test
 	void testZCallCount() {
-		assertEquals(10, StringCalculator.getCalledCount()); // this is 12th in order in my case
+		assertEquals(11, StringCalculator.getCalledCount()); // this is 13th in order in my case
 	}
 	
 	@Test
@@ -74,5 +74,10 @@ class StringCalculatorTest {
 	@Test
 	void testCustomMultipleDelimiterOfOneChar() {
 		assertEquals(70, StringCalculator.add("//[*][%]\n25*30%15"));
+	}
+	
+	@Test
+	void testCustomMultipleDelimiterOfAnyLength() {
+		assertEquals(77, StringCalculator.add("//[**][%%]\n15**25%%37"));
 	}
 }
