@@ -5,7 +5,11 @@ import java.util.List;
 
 public class StringCalculator {
 
+	private static int count = 0;
+
 	public static int add(String numbers) {
+
+		count++;
 
 		if (numbers.isEmpty()) {
 			return 0;
@@ -85,5 +89,9 @@ public class StringCalculator {
 			intNums.add(intConveter(nums[i]));
 		}
 		return intNums;
+	}
+
+	public static int getCalledCount() {
+		return count;
 	}
 }
